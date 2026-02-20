@@ -1,36 +1,27 @@
-# Docker Projekt – ToDoApp  
-**Nginx + Express + PostgreSQL (Docker Compose)**
+# ToDoApp – Docker Projekt  
+Nginx + Express + PostgreSQL (Docker Compose)
 
 ---
 
-## Projektbeschreibung
+## 📦 Projektbeschreibung
 
-In diesem Projekt wurde eine mehrcontainerfähige Docker-Anwendung erstellt.
+Diese Anwendung ist eine mehrcontainerfähige ToDo-Webanwendung.
 
-Die Anwendung besteht aus:
+Sie besteht aus:
 
-- Nginx Webserver (Frontend)
-- Express Backend (Node.js API)
-- PostgreSQL Datenbank
-- Docker Compose zur Orchestrierung
-- Persistente Speicherung über Docker Volume
+- **Nginx** → Webserver (Frontend)
+- **Express (Node.js)** → Backend API
+- **PostgreSQL** → Datenbank
+- **Docker Compose** → Orchestrierung
+- **Docker Volume** → Persistente Speicherung
 
-Benutzer können Einträge erfassen, welche in der Datenbank gespeichert und angezeigt werden.
-
----
-
-## Architektur
-
-| Service | Beschreibung |
-|----------|-------------|
-| web | Nginx Webserver (Port 8080) |
-| app | Express Backend (REST API) |
-| db | PostgreSQL Datenbank |
-| volume dbdata | Persistente Datenspeicherung |
+Benutzer können ToDos erfassen, welche in der PostgreSQL-Datenbank gespeichert werden.
 
 ---
 
-## Start der Anwendung (Play with Docker oder Linux)
+# 🚀 Start für Lehrperson (Play with Docker)
+
+Die Anwendung kann mit folgenden Befehlen gestartet werden:
 
 ```bash
 git clone https://github.com/Marco-Ermel/-bungsprojekte_ToDoApp.git
@@ -40,77 +31,72 @@ docker compose -f pfad/docker-compose/docker-compose.yml up -d --build
 
 ---
 
-## Zugriff
+## 🌐 Zugriff
 
-Webseite öffnen:
+Nach dem Start:
 
-```
-http://localhost:8080
-```
+- Port **8080** öffnen
+- Lokal:  
+  `http://localhost:8080`
 
 In Play with Docker:
-Port 8080 öffnen.
+→ Port 8080 anklicken
 
 ---
 
-## Persistenz-Test
+## 🧪 Persistenz-Test
 
-Nach folgendem Befehl:
+Container stoppen:
 
 ```bash
 docker compose -f pfad/docker-compose/docker-compose.yml down
+```
+
+Neu starten:
+
+```bash
 docker compose -f pfad/docker-compose/docker-compose.yml up -d
 ```
 
-bleiben gespeicherte Daten erhalten.
-
+Gespeicherte ToDos bleiben erhalten.  
 Die Daten werden im Docker Volume `dbdata` gespeichert.
 
 ---
 
-## Docker Image (Push in Registry)
+## 🏗 Architektur
 
-Das Image wurde in eine Container Registry gepusht.
+| Service | Funktion |
+|----------|----------|
+| web | Nginx Webserver |
+| app | Express Backend (REST API) |
+| db | PostgreSQL Datenbank |
+| dbdata | Persistentes Volume |
+
+---
+
+## 🐳 Docker Image
+
+Ein eigenes Docker Image wurde erstellt und in eine Container Registry gepusht.
 
 Beispiel:
 
 ```
-ghcr.io/marco-ermel/todoapp-web:1.0
-ghcr.io/marco-ermel/todoapp-app:1.0
+ghcr.io/marco-ermel/todoapp:1.2
 ```
 
 Nachweis erfolgt per Screenshot des erfolgreichen `docker push`.
 
 ---
 
-## Änderungen veröffentlichen
+## 🛠 Container prüfen
 
-### Frontend ändern
-
-```bash
-git add .
-git commit -m "Update Frontend"
-git push
-```
-
-### Backend ändern
-
-```bash
-docker compose -f pfad/docker-compose/docker-compose.yml up -d --build
-git add .
-git commit -m "Update Backend"
-git push
-```
-
----
-
-## Container anzeigen
+Laufende Container anzeigen:
 
 ```bash
 docker ps
 ```
 
-## Logs anzeigen
+Logs anzeigen:
 
 ```bash
 docker logs uebungsprojekt_web
@@ -120,18 +106,16 @@ docker logs uebungsprojekt_db
 
 ---
 
-## Verwendete Technologien
+## 🔧 Stoppen der Anwendung
 
-- Docker
-- Docker Compose
-- Nginx
-- Node.js / Express
-- PostgreSQL
-- GitHub
+```bash
+docker compose -f pfad/docker-compose/docker-compose.yml down
+```
 
 ---
 
-## Autor
+## 👤 Autor
 
 Marco Ermel  
-mer152473@stud.gibb.ch# -bungsprojekte_ToDoApp
+GitHub: Marco-Ermel  
+E-Mail: mer152473@stud.gibb.ch
